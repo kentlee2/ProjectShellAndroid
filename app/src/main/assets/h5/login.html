@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+  </head>
+
+  <body style="background: white;">
+    <div id="base" class="" style="font-size: 1rem;">
+        <div style="margin: 10px;">
+            <div style="line-height: 30px;vertical-align: middle;display: inline-block;width: 30%;">用户名</div>
+            <input id="usernameInput" type="text" style="font-size: 1rem;color: rgb(153, 153, 153);display: inline-block;height: 30px;border: 1px solid;width: 66%;line-height: 30px;">
+        </div>
+        
+        <div style="margin: 10px">
+            <div style="line-height: 30px;vertical-align: middle;display: inline-block;width: 30%;">密码</div>
+            <input id="passwordInput" type="text" style="font-size: 1rem;color: rgb(153, 153, 153);display: inline-block;height: 30px;border: 1px solid;width: 66%;line-height: 30px;">
+        </div>
+
+        <div style="margin: 10px">
+            <div onclick="onLoginBtnClick()" style="width: 66%;margin-left: 106px;border: 1px solid;text-align: center;line-height: 30px;">登录</div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-1.js"></script>
+    
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/js/md5.js"></script>
+
+    <script>
+      window.onload = function(){
+        var userInfoStr = getUserInfoFromLocalStorage();
+        if(userInfoStr != null) {
+          var userInfoObj = JSON.parse(userInfoStr);
+          if(userInfoObj != null && userInfoObj.signkey != null) window.location.href = 'main.html';
+        }
+        // if (loginInfo != null) {
+        //   var username = loginInfo.split(',')[0];
+        //   var password = loginInfo.split(',')[1];
+        //   requestLoginHander(username, password, function(jsonObj){
+        //     if(jsonObj.status != 1) alert(jsonObj.msg);
+        //     else {
+        //       window.location.href = 'main.html';
+        //     }
+        //   });
+        // }
+      }
+
+      function onLoginBtnClick() {
+          var username = document.getElementById('usernameInput').value;
+          var password = document.getElementById('passwordInput').value;
+          requestLoginHander(username, password, function(jsonObj){
+            if(jsonObj.status != 1) alert(jsonObj.msg);
+            else {
+              // 直接跳转
+              window.location.href = 'main.html';
+            }
+          });
+      }
+    </script>
+</body></html>

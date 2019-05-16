@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProjectShellAndroid</string>
+    <string name="language">cn</string>
+    <string name="net_error">网络连接错误</string>
+    <string name="download_success">下载成功</string>
+    <string name="download_fail">下载失败</string>
+    <string name="update_now">立即更新</string>
+    <string name="downloading">下载中…</string>
+    <string name="new_version">新版本</string>
+    <string name="install_fail">安装失败</string>
+</resources>

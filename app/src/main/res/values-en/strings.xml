@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProjectShellAndroid</string>
+    <string name="language">cn</string>
+    <string name="net_error">network error</string>
+    <string name="download_fail">download fail</string>
+    <string name="update_now">update now</string>
+    <string name="download_success">download success</string>
+    <string name="downloading">downloading…</string>
+    <string name="new_version">new version</string>
+    <string name="install_fail">install fail</string>
+</resources>

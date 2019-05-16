@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>控制面板</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+  </head>
+
+  <style>
+    .info-block {
+      margin: 0px 10px;
+    }
+
+    .gotoBtn {
+      border: 1px solid;
+      text-align: center;
+    }
+
+    .gotoBtn2Class {
+      border: 1px solid;
+      text-align: center;
+      display: inline-block;
+      width: 23%;
+    }
+
+    .gotoBtn2ClassFor5 {
+      border: 1px solid;
+      text-align: center;
+      display: inline-block;
+      width: 18%;
+    }
+    
+    .title-style {
+      line-height: 40px;
+      vertical-align: middle;
+      display: inline-block;
+      width: 30%;
+    }
+
+    .content-style {
+      font-size: 1rem;
+      color: rgb(153, 153, 153);
+      display: inline-block;
+      height: 40px;
+      width: 66%;
+      line-height: 40px;
+    }
+  </style>
+
+<body style="background: white;margin: 0px;">
+    <div style="width: 100%;text-align: center;height: 44px;line-height: 44px;background-color: lightslategrey;color: white;font-size: 1rem;">
+      <div style="display: inline-block;width: 22%;" onclick="window.history.back(-1);"></div>
+      <div style="display: inline-block;width: 50%;">首页</div>
+      <div style="display: inline-block;width: 22%;"></div>
+    </div>
+    <div id="base" class="" style="font-size: 1rem;">
+        <div class="info-block">
+            <div class="title-style">用户名</div>
+            <div id="usernameDiv" class="content-style"></div>
+        </div>
+        
+        <div class="info-block">
+            <div class="title-style">电话</div>
+            <div id="phoneDiv" class="content-style"></div>
+        </div>
+
+        <div style="margin: 10px 10px;">
+          <div style="margin-top: 16px;">
+            <div onclick="gotoPage('test2.html')" class="gotoBtn2Class" style="width: 20%;">二维码分享</div>
+            <div onclick="removeFromLocalStorage(LOCALSTORAGE_USERINFO);gotoPage('login.html');" class="gotoBtn2Class" style="width: 20%;">退出登录</div>
+          </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-1.js"></script>
+    
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/js/md5.js"></script>
+
+    <script>
+      window.onload = function(){
+        getUserInfo(function(jsonObj){
+          if(jsonObj.status != 1) alert(jsonObj.msg);
+          else {
+            document.getElementById('usernameDiv').innerHTML = jsonObj.obj.username;
+            document.getElementById('phoneDiv').innerHTML = jsonObj.obj.phone;
+          }
+        });
+      }
+
+      function gotoPage(url) {
+        window.location.href = url;
+      }
+    </script>
+</body></html>
